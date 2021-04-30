@@ -2,18 +2,34 @@
   <Container>
     <div class="card-wrapper">
       <Card class="card">
-        <Qrcode
-          value="https://spotistats.app"
-          background="transparent"
-          foreground="#1ED761"
-          level="H"
-          size="180"
-        ></Qrcode>
+        <div class="qr">
+          <Qrcode
+            value="https://spotistats.app"
+            background="transparent"
+            foreground="white"
+            level="H"
+            size="180"
+          />
+        </div>
         <Button>Sign in with Spotify</Button>
       </Card>
     </div>
   </Container>
 </template>
+
+<style lang="scss" scoped>
+.card-wrapper {
+  width: 300px;
+  margin: 0 auto;
+
+  .card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+}
+</style>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
@@ -32,17 +48,3 @@ export default defineComponent({
   },
 });
 </script>
-
-<style lang="scss" scoped>
-.card-wrapper {
-  width: 300px;
-  margin: 0 auto;
-
-  .card {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-  }
-}
-</style>
