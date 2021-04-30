@@ -8,6 +8,7 @@
 	--gap-small: 5px;
 	--gap: 10px;
 	--gap-large: 20px;
+	--gap-larger: 40px;
 
 	// Buttons
 	--primary-button-bg: rgba(30, 215, 96, 0.1);
@@ -25,5 +26,6 @@ body {
 
 // Reset default margins
 *, *::before, *::after {
+	box-sizing: border-box;
 	margin: 0;
 }
