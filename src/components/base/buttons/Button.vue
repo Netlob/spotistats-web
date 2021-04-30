@@ -10,6 +10,7 @@
   border-radius: 6px;
   padding: 8px 20px;
   font-weight: bold;
+  font-family: inherit;
   font-size: 14px;
   cursor: pointer;
 
