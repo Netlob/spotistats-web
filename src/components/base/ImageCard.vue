@@ -2,6 +2,7 @@
   <article class="image-card">
     <div class="square-img">
       <img class="main-image" :src="image" />
+      <h3 v-if="stickyTitle" class="sticky-title">{{stickyTitle}}</h3>
     </div>
     <div class="card-info">
       <h2 class="title">{{ title }}</h2>
@@ -27,6 +28,14 @@
     left: 0;
     width: 100%;
     height: 100%;
+  }
+
+  .sticky-title {
+    position: absolute;
+    font-size: 1.5rem;
+    top: 10px;
+    right: 10px;
+    text-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
   }
 
 }
@@ -61,6 +70,11 @@ export default defineComponent({
     image: {
       type: String,
       required: true,
+    },
+    stickyTitle: {
+      type: String,
+      required: false,
+      default: '',
     },
   },
 });

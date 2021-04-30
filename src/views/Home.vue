@@ -6,6 +6,7 @@
         <ImageCard
           image="https://i0.wp.com/abitofpopmusic.com/wp-content/uploads/2020/06/astrid-s-dance-dance-dance.jpg?fit=1200%2C1200&ssl=1"
           title="Astrid S"
+          sticky-title="#5"
         />
         <ImageCard
           image="https://i0.wp.com/abitofpopmusic.com/wp-content/uploads/2020/06/astrid-s-dance-dance-dance.jpg?fit=1200%2C1200&ssl=1"
