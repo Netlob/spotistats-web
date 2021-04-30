@@ -17,6 +17,7 @@
   &[data-type='primary'] {
     background: var(--primary-button-bg);
     color: var(--primary-button-text);
+    transition: background 0.15s;
 
     &:hover {
       background: var(--primary-button-bg-hover);
