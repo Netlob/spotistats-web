@@ -2,7 +2,9 @@
   <header>
     <Container class="header-content">
       <div class="logo">
-        <Logo />
+        <router-link to="/">
+          <Logo />
+        </router-link>
       </div>
       <nav>
         <Button type="primary">Sign In</Button>
