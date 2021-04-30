@@ -1,6 +1,12 @@
 :root {
+	--primary: #1ED761;
 	--body: #18181C;
+	--body-lighter: #222228;
 	--text: #FFFFFF;
+
+	// Buttons
+	--primary-button-bg: rgba(30, 215, 96, 0.1);
+	--primary-button-text: #1ED760;
 }
 
 body {
