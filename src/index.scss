@@ -1,0 +1,16 @@
+:root {
+	--body: #18181C;
+	--text: #FFFFFF;
+}
+
+body {
+	margin: 0;
+	background: var(--body);
+	color: var(--text);
+	font-family: Poppins, Arial, Helvetica, sans-serif;
+}
+
+// Reset default margins
+*, *::before, *::after {
+	margin: 0;
+}
