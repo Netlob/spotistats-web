@@ -13,4 +13,8 @@
   -moz-box-shadow: 0px 10px 50px -10px rgba(0, 0, 0, 0.5);
   box-shadow: 0px 10px 50px -10px rgba(0, 0, 0, 0.5);
 }
+.card.larger-vertical-padding {
+  padding: 40px 20px;
+  padding-top: 50px;
+}
 </style>
