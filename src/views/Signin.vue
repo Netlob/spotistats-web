@@ -12,7 +12,7 @@
           />
           <p class="qr-info">Scan the QR code with the Spotistats app</p>
         </div>
-        <!-- <hr /> -->
+        <Divider>or</Divider>
         <Button size="large">Sign in with Spotify</Button>
       </Card>
     </div>
@@ -34,7 +34,6 @@
 .qr {
   width: 180px;
   margin: 0 auto;
-  margin-bottom: var(--gap-large);
 
   .qr-info {
     width: 80%;
@@ -45,15 +44,6 @@
   }
 
 }
-
-hr {
-  width: 100%;
-  height: 1px;
-  border: 0;
-  background: var(--border);
-  margin: var(--gap-large) 0;
-}
-
 </style>
 
 <script lang="ts">
@@ -62,6 +52,7 @@ import Qrcode from 'qrcode.vue';
 import Card from '../components/layout/Card.vue';
 import Container from '../components/layout/Container.vue';
 import Button from '../components/base/buttons/Button.vue';
+import Divider from '../components/base/Divider.vue';
 
 export default defineComponent({
   name: 'Signin',
@@ -70,6 +61,7 @@ export default defineComponent({
     Container,
     Button,
     Qrcode,
+    Divider,
   },
 });
 </script>
