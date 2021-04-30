@@ -2,7 +2,7 @@
   <article class="image-card">
     <div class="square-img">
       <img class="main-image" :src="image" />
-      <h3 v-if="stickyTitle" class="sticky-title">{{stickyTitle}}</h3>
+      <h3 v-if="stickyTitle" class="sticky-title">{{ stickyTitle }}</h3>
     </div>
     <div class="card-info">
       <h2 class="title">{{ title }}</h2>
@@ -37,7 +37,6 @@
     right: 10px;
     text-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
   }
-
 }
 
 .main-image {
@@ -52,9 +51,7 @@
     width: 100%;
     text-align: center;
   }
-
 }
-
 </style>
 
 <script lang="ts">

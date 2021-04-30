@@ -13,7 +13,7 @@
   font-size: 14px;
   cursor: pointer;
 
-  &[data-type="primary"] {
+  &[data-type='primary'] {
     background: var(--primary-button-bg);
     color: var(--primary-button-text);
 
@@ -24,9 +24,7 @@
     &:active {
       background: var(--primary-button-bg-active);
     }
-
   }
-
 }
 </style>
 

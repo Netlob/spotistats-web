@@ -23,7 +23,6 @@ header {
     width: 2rem;
     height: 2rem;
   }
-
 }
 
 .header-content {
@@ -31,7 +30,6 @@ header {
   justify-content: space-between;
   align-items: center;
 }
-
 </style>
 
 <script lang="ts">
