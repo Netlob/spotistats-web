@@ -11,10 +11,20 @@
   padding: 8px 20px;
   font-weight: bold;
   font-size: 14px;
+  cursor: pointer;
 
   &[data-type="primary"] {
     background: var(--primary-button-bg);
     color: var(--primary-button-text);
+
+    &:hover {
+      background: var(--primary-button-bg-hover);
+    }
+
+    &:active {
+      background: var(--primary-button-bg-active);
+    }
+
   }
 
 }
