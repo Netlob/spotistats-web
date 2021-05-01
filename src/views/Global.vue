@@ -29,6 +29,24 @@
         />
       </div>
     </div>
+    <main>
+      <div class="item">
+        <h1 class="rank">#1</h1>
+        <Card>
+          <div class="card">
+            <div class="image">
+              <ImageCard
+                image="https://i.scdn.co/image/ab67616d00001e02175715816616d0fb317fabeb"
+              ></ImageCard>
+            </div>
+            <div class="info">
+              <h1>RAPSTER</h1>
+              <p>4,566,861 streams</p>
+            </div>
+          </div>
+        </Card>
+      </div>
+    </main>
   </Container>
 </template>
 
@@ -62,18 +80,46 @@
     margin-left: -50px;
   }
 }
+
+.item {
+  display: flex;
+  align-items: center;
+
+  .rank {
+    margin-right: 20px;
+  }
+
+  .card {
+    display: flex;
+    align-items: center;
+    width: 100%;
+
+    .image {
+      width: 80px;
+      margin-right: 20px;
+    }
+
+    .info {
+      > p {
+        font-size: 1rem;
+      }
+    }
+  }
+}
 </style>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
 import Container from '../components/layout/Container.vue';
 import ImageCard from '../components/base/ImageCard.vue';
+import Card from '../components/layout/Card.vue';
 
 export default defineComponent({
   name: 'Global',
   components: {
     Container,
     ImageCard,
+    Card,
   },
 });
 </script>
