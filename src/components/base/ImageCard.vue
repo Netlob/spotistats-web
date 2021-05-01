@@ -4,10 +4,10 @@
       <div class="square-img">
         <img :src="image" />
         <h3 v-if="stickyCorner" class="sticky-corner">{{ stickyCorner }}</h3>
-        <h2 v-if="stickyTitle" class="sticky-title">{{ stickyTitle }}</h2>
+        <h1 v-if="stickyTitle" class="sticky-title">{{ stickyTitle }}</h1>
         <p v-if="stickyDesc" class="sticky-desc">{{ stickyDesc }}</p>
       </div>
-      <div class="card-info">
+      <div class="card-info" v-if="title">
         <h2 class="title">{{ title }}</h2>
         <p class="desc">{{ desc }}</p>
       </div>
