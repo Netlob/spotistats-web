@@ -65,6 +65,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: 100%;
 
   .artist-name {
     font-size: 6rem;
