@@ -2,7 +2,9 @@
   <div id="user">
     <!-- Top section with profile -->
     <div class="block">
-      <Profile />
+      <Container>
+        <Profile />
+      </Container>
     </div>
     <!-- Main page -->
     <main>
@@ -15,7 +17,7 @@
                 <ImageCard
                   image="https://images-na.ssl-images-amazon.com/images/I/71bASkE2SSL._SL1200_.jpg"
                   title="Cherokee"
-                  sticky-title="#5"
+                  sticky-corner="#5"
                   link="/artist/geenideewieditis"
                 />
                 <ImageCard
