@@ -2,6 +2,7 @@ import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
 import Home from '../views/Home.vue';
 import User from '../views/User.vue';
 import Signin from '../views/Signin.vue';
+import Artist from '../views/Artist.vue';
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -18,6 +19,11 @@ const routes: Array<RouteRecordRaw> = [
     path: '/signin',
     name: 'Signin',
     component: Signin,
+  },
+  {
+    path: '/artist/:id',
+    name: 'Artist',
+    component: Artist,
   },
   {
     path: '/about',
