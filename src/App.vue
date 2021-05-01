@@ -15,7 +15,7 @@
 
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity 0.3s ease-out;
+  transition: opacity 0.15s ease-out;
 }
 </style>
 
