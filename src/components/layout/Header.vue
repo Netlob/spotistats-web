@@ -7,7 +7,9 @@
         </router-link>
       </div>
       <nav>
-        <Button type="primary">Sign In</Button>
+        <router-link to="/signin">
+          <Button type="primary">Sign In</Button>
+        </router-link>
       </nav>
     </Container>
   </header>
