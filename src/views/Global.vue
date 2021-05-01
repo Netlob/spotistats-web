@@ -30,7 +30,7 @@
       </div>
     </div>
     <main>
-      <div class="item">
+      <router-link to="/track/polog" class="item link">
         <h1 class="rank">#1</h1>
         <Card>
           <div class="card">
@@ -45,12 +45,17 @@
             </div>
           </div>
         </Card>
-      </div>
+      </router-link>
     </main>
   </Container>
 </template>
 
 <style lang="scss" scoped>
+.link {
+  color: inherit;
+  text-decoration: none;
+}
+
 .image-container {
   margin-top: 100px;
   display: flex;
