@@ -94,6 +94,10 @@ main {
   font-weight: inherit;
   font-size: 1.5rem;
 }
+
+.image-card-container {
+  margin-top: var(--gap);
+}
 </style>
 
 <script lang="ts">
