@@ -6,13 +6,13 @@
 	--text-secondary: lightgray;
 	--border: rgba(255, 255, 255, 0.1);
 
-	// Gaps
+	/* Gaps */
 	--gap-small: 5px;
 	--gap: 10px;
 	--gap-large: 20px;
 	--gap-larger: 40px;
 
-	// Buttons
+	/* Buttons */
 	--primary-button-bg: rgba(30, 215, 96, 0.1);
 	--primary-button-bg-hover: rgba(30, 215, 96, 0.15);
 	--primary-button-bg-active: rgba(30, 215, 96, 0.05);
@@ -24,9 +24,10 @@ body {
 	background: var(--body);
 	color: var(--text);
 	font-family: Poppins, Arial, Helvetica, sans-serif;
+	overflow-x: hidden;
 }
 
-// Reset default margins
+/* Reset default margins */
 *, *::before, *::after {
 	box-sizing: border-box;
 	margin: 0;
