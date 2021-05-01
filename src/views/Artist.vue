@@ -60,8 +60,6 @@
   min-height: 500px;
   background-color: var(--body-lighter);
   border-radius: 0 0 40px 40px;
-  padding-top: 80px;
-  padding-bottom: 150px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -71,7 +69,20 @@
 
   .artist-name {
     font-size: 6rem;
-    text-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+    text-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+  }
+
+  @media only screen and (max-width: 600px) {
+    .artist-name {
+      font-size: 4rem;
+    }
+  }
+}
+
+@media only screen and (max-width: 1300px) {
+  .block {
+    background-size: cover;
+    background-position-x: center;
   }
 }
 
