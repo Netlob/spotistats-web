@@ -1,18 +1,25 @@
 <template>
-  <article class="image-card">
-    <div class="square-img">
-      <img class="main-image" :src="image" />
-      <h3 v-if="stickyTitle" class="sticky-title">{{ stickyTitle }}</h3>
-    </div>
-    <div class="card-info">
-      <h2 class="title">{{ title }}</h2>
-    </div>
-  </article>
+  <router-link :to="link" class="link">
+    <article class="image-card">
+      <div class="square-img">
+        <img class="main-image" :src="image" />
+        <h3 v-if="stickyTitle" class="sticky-title">{{ stickyTitle }}</h3>
+      </div>
+      <div class="card-info">
+        <h2 class="title">{{ title }}</h2>
+      </div>
+    </article>
+  </router-link>
 </template>
 
 <style lang="scss" scoped>
 .image-card {
   width: 100%;
+}
+
+.link {
+  text-decoration: none;
+  color: inherit;
 }
 
 // The image HAS to be 1:1
@@ -73,6 +80,11 @@ export default defineComponent({
       required: true,
     },
     stickyTitle: {
+      type: String,
+      required: false,
+      default: '',
+    },
+    link: {
       type: String,
       required: false,
       default: '',

@@ -10,14 +10,13 @@
         <Card>
           <div class="two-cols">
             <div>
-              <h2 class="card-title">
-                <strong>Top tracks</strong> <span>past 4 weeks</span>
-              </h2>
+              <h2 class="card-title"><strong>Top tracks</strong> <span>past 4 weeks</span></h2>
               <ImageCardContainer>
                 <ImageCard
                   image="https://images-na.ssl-images-amazon.com/images/I/71bASkE2SSL._SL1200_.jpg"
                   title="Cherokee"
                   sticky-title="#5"
+                  link="/artist/geenideewieditis"
                 />
                 <ImageCard
                   image="https://i0.wp.com/abitofpopmusic.com/wp-content/uploads/2020/06/astrid-s-dance-dance-dance.jpg?fit=1200%2C1200&ssl=1"
@@ -30,9 +29,7 @@
               </ImageCardContainer>
             </div>
             <div>
-              <h2 class="card-title">
-                <strong>Top artists</strong> <span>past 4 weeks</span>
-              </h2>
+              <h2 class="card-title"><strong>Top artists</strong> <span>past 4 weeks</span></h2>
               <ImageCardContainer>
                 <ImageCard
                   image="https://i0.wp.com/abitofpopmusic.com/wp-content/uploads/2020/06/astrid-s-dance-dance-dance.jpg?fit=1200%2C1200&ssl=1"
@@ -89,7 +86,6 @@ main {
 .image-card-container {
   margin-top: var(--gap);
 }
-
 </style>
 
 <script lang="ts">
