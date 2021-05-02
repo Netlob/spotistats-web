@@ -16,8 +16,6 @@
         <Button @click="validateQr" class="scanned-button"
           >I've scanned the QR-code with the app</Button
         >
-        <Divider>or</Divider>
-        <Button>Sign in with Spotify</Button>
       </Card>
     </div>
   </Container>
@@ -60,7 +58,6 @@ import Qrcode from 'qrcode.vue';
 import Card from '../components/layout/Card.vue';
 import Container from '../components/layout/Container.vue';
 import Button from '../components/base/buttons/Button.vue';
-import Divider from '../components/base/Divider.vue';
 
 export default defineComponent({
   name: 'Signin',
@@ -76,7 +73,6 @@ export default defineComponent({
     Container,
     Button,
     Qrcode,
-    Divider,
   },
   async created() {
     this.qrdata = (
