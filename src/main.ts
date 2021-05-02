@@ -5,8 +5,10 @@ import router from './router';
 import store from './store';
 
 import './index.scss';
+import i18n from './i18n';
 
 createApp(App)
+  .use(i18n)
   .use(store)
   .use(router)
   .mount('#app');
