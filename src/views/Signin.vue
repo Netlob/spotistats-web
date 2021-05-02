@@ -5,8 +5,8 @@
         <div class="qr">
           <Qrcode
             :value="qrdata"
-            background="transparent"
-            foreground="white"
+            background="white"
+            foreground="black"
             level="H"
             size="180"
             renderAs="svg"
@@ -75,11 +75,7 @@ export default defineComponent({
     Qrcode,
   },
   async created() {
-    this.qrdata = (
-      await fetch(
-        `https://beta-api.spotistats.app/api/v1/auth/qr?secret=${this.secret}`,
-      ).then((res) => res.json())
-    ).data;
+    this.qrdata = `spotistats://auth#${(await fetch(`https://beta-api.spotistats.app/api/v1/auth/qr?secret=${this.secret}`).then((res) => res.json())).data}`;
   },
   methods: {
     async validateQr() {
