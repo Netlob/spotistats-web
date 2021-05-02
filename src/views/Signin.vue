@@ -4,14 +4,15 @@
       <Card class="card larger-vertical-padding">
         <div class="qr">
           <Qrcode
-            value="https://spotistats.app/auth/eenheellangtokenwatheelsecretis:)"
+            :value="qrdata"
             background="transparent"
-            foreground="lightgray"
+            foreground="white"
             level="H"
             size="180"
             renderAs="svg"
           />
           <p class="qr-info">Scan the QR code with the Spotistats app</p>
+          <Button size="large" @click="validateQr">I've scanned the QR-code with the app</Button>
         </div>
         <Divider>or</Divider>
         <Button>Sign in with Spotify</Button>
@@ -47,6 +48,7 @@
 </style>
 
 <script lang="ts">
+import { uuid } from 'vue-uuid';
 import { defineComponent } from 'vue';
 import Qrcode from 'qrcode.vue';
 import Card from '../components/layout/Card.vue';
@@ -56,12 +58,28 @@ import Divider from '../components/base/Divider.vue';
 
 export default defineComponent({
   name: 'Signin',
+  data() {
+    return {
+      qrdata: '',
+      token: '',
+      secret: uuid.v4(),
+    };
+  },
   components: {
     Card,
     Container,
     Button,
     Qrcode,
     Divider,
+  },
+  async created() {
+    this.qrdata = (await fetch(`http://localhost:3000/api/v1/auth/qr?secret=${this.secret}`).then((res) => res.json())).data;
+  },
+  methods: {
+    async validateQr() {
+      this.token = (await fetch('http://localhost:3000/api/v1/auth/qr', { method: 'POST', body: JSON.stringify({ data: this.qrdata, secret: this.secret }), headers: { 'Content-Type': 'application/json' } }).then((res) => res.json())).data;
+      alert(this.token);
+    },
   },
 });
 </script>
