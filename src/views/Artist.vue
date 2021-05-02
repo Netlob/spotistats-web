@@ -12,7 +12,9 @@
       <Container>
         <Card>
           <div>
-            <h2 class="card-title"><strong>Top tracks</strong></h2>
+            <h2 class="card-title">
+              <strong>{{ $t('topTracks') }}</strong>
+            </h2>
             <ImageCardContainer>
               <ImageCard
                 image="https://images-na.ssl-images-amazon.com/images/I/71bASkE2SSL._SL1200_.jpg"

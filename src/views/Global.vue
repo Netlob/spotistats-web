@@ -6,7 +6,7 @@
           image="https://i.scdn.co/image/ab67616d00001e02664034dd80e91b28f773598d"
           link="/track/lilnasx"
           sticky-title="MONTERO"
-          sticky-desc="4,566,861 streams"
+          :sticky-desc="`4,566,861 ${$t('streams')}`"
           sticky-corner="#1"
         />
       </div>
@@ -15,7 +15,7 @@
           image="https://i.scdn.co/image/ab67616d00001e02e6f407c7f3a0ec98845e4431"
           link="/track/justinbieber"
           sticky-title="Peaches"
-          sticky-desc="4,566,861 streams"
+          :sticky-desc="`4,566,861 ${$t('streams')}`"
           sticky-corner="#2"
         />
       </div>
@@ -24,7 +24,7 @@
           image="https://i.scdn.co/image/ab67616d00001e02175715816616d0fb317fabeb"
           link="/track/polog"
           sticky-title="RAPSTAR"
-          sticky-desc="4,566,861 streams"
+          :sticky-desc="`4,566,861 ${$t('streams')}`"
           sticky-corner="#3"
         />
       </div>
@@ -41,7 +41,7 @@
             </div>
             <div class="info">
               <h1>RAPSTER</h1>
-              <p>4,566,861 streams</p>
+              <p>4,566,861 {{ $t('streams') }}</p>
             </div>
           </div>
         </Card>
