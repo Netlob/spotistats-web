@@ -4,16 +4,17 @@
       <Card class="card larger-vertical-padding">
         <div class="qr">
           <Qrcode
-            value="https://spotistats.app"
+            value="https://spotistats.app/auth/eenheellangtokenwatheelsecretis:)"
             background="transparent"
             foreground="lightgray"
             level="H"
             size="180"
+            renderAs="svg"
           />
           <p class="qr-info">Scan the QR code with the Spotistats app</p>
         </div>
         <Divider>or</Divider>
-        <Button size="large">Sign in with Spotify</Button>
+        <Button>Sign in with Spotify</Button>
       </Card>
     </div>
   </Container>
@@ -42,7 +43,6 @@
     margin: 0 auto;
     color: var(--text-secondary);
   }
-
 }
 </style>
 

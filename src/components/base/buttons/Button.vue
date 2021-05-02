@@ -1,5 +1,5 @@
 <template>
-  <button class="app-button" :data-type="type" :data-size="size" @click="(e) => $emit('click', e)">
+  <button class="app-button" :data-type="type" :data-size="size" @click="e => $emit('click', e)">
     <slot />
   </button>
 </template>
@@ -7,13 +7,16 @@
 <style lang="scss" scoped>
 .app-button {
   border: 0;
-  border-radius: 6px;
-  padding: 8px 20px;
   font-weight: bold;
   font-family: inherit;
   font-size: 14px;
   cursor: pointer;
   transition: background 0.15s;
+
+  width: 100%;
+  padding: 12px 20px;
+  border-radius: 15px;
+  font-size: 1rem;
 
   // Color schemes for the button
   &[data-type='primary'] {
@@ -30,11 +33,9 @@
   }
 
   // Sizes
-  &[data-size='large'] {
-    width: 100%;
-    padding: 12px 20px;
-    border-radius: 15px;
-    font-size: 1rem;
+  &[data-size='small'] {
+    border-radius: 6px;
+    padding: 8px 20px;
   }
 }
 </style>
