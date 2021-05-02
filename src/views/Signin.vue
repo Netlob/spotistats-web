@@ -3,14 +3,15 @@
     <div class="card-wrapper">
       <Card class="card larger-vertical-padding">
         <div class="qr">
-          <Qrcode
-            :value="qrdata"
-            background="white"
-            foreground="black"
-            level="H"
-            size="180"
-            renderAs="svg"
-          />
+          <div class="qr-border">
+            <Qrcode
+              :value="qrdata"
+              background="white"
+              foreground="#222228"
+              size="180"
+              renderAs="svg"
+            />
+          </div>
           <p class="qr-info">Scan the QR code with the Spotistats app</p>
         </div>
         <Button @click="validateQr" class="scanned-button"
@@ -34,8 +35,17 @@
 }
 
 .qr {
-  width: 180px;
   margin: 0 auto;
+
+  .qr-border {
+    border-radius: 10px;
+    padding: 10px 10px 3.5px 10px;
+    background-color: #fff;
+    width: 200px;
+    height: 200px;
+    margin: auto;
+    margin-bottom: 8px;
+  }
 
   .qr-info {
     width: 80%;
@@ -63,6 +73,7 @@ export default defineComponent({
   name: 'Signin',
   data() {
     return {
+      data: '',
       qrdata: '',
       token: '',
       secret: uuid.v4(),
@@ -75,19 +86,20 @@ export default defineComponent({
     Qrcode,
   },
   async created() {
-    this.qrdata = `spotistats://auth#${(await fetch(`https://beta-api.spotistats.app/api/v1/auth/qr?secret=${this.secret}`).then((res) => res.json())).data}`;
+    this.data = (await fetch(`https://beta-api.spotistats.app/api/v1/auth/qr?secret=${this.secret}`).then((res) => res.json())).data;
+    this.qrdata = `spotistats://auth#${this.data}`;
   },
   methods: {
     async validateQr() {
       this.token = (
         await fetch('https://beta-api.spotistats.app/api/v1/auth/qr', {
           method: 'POST',
-          body: JSON.stringify({ data: this.qrdata, secret: this.secret }),
+          body: JSON.stringify({ data: this.data, secret: this.secret }),
           headers: { 'Content-Type': 'application/json' },
         }).then((res) => res.json())
       ).data;
-      // eslint-disable-next-line no-alert
-      alert(this.token);
+      localStorage.setItem('token', this.token);
+      window.location.href = '/';
     },
   },
 });
