@@ -73,11 +73,11 @@ export default defineComponent({
     Divider,
   },
   async created() {
-    this.qrdata = (await fetch(`http://localhost:3000/api/v1/auth/qr?secret=${this.secret}`).then((res) => res.json())).data;
+    this.qrdata = (await fetch(`https://beta-api.spotistats.app/api/v1/auth/qr?secret=${this.secret}`).then((res) => res.json())).data;
   },
   methods: {
     async validateQr() {
-      this.token = (await fetch('http://localhost:3000/api/v1/auth/qr', { method: 'POST', body: JSON.stringify({ data: this.qrdata, secret: this.secret }), headers: { 'Content-Type': 'application/json' } }).then((res) => res.json())).data;
+      this.token = (await fetch('https://beta-api.spotistats.app/api/v1/auth/qr', { method: 'POST', body: JSON.stringify({ data: this.qrdata, secret: this.secret }), headers: { 'Content-Type': 'application/json' } }).then((res) => res.json())).data;
       alert(this.token);
     },
   },
