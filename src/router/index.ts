@@ -3,6 +3,7 @@ import Home from '../views/Home.vue';
 import User from '../views/User.vue';
 import Signin from '../views/Signin.vue';
 import Artist from '../views/Artist.vue';
+import Global from '../views/Global.vue';
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -26,12 +27,9 @@ const routes: Array<RouteRecordRaw> = [
     component: Artist,
   },
   {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue'),
+    path: '/global',
+    name: 'Global',
+    component: Global,
   },
 ];
 
