@@ -88,6 +88,12 @@ main {
 .image-card-container {
   margin-top: var(--gap);
 }
+
+.card {
+  -webkit-box-shadow: 0px 10px 50px -10px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0px 10px 50px -10px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 10px 50px -10px rgba(0, 0, 0, 0.5);
+}
 </style>
 
 <script lang="ts">
