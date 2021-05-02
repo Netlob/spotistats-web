@@ -12,8 +12,10 @@
             renderAs="svg"
           />
           <p class="qr-info">Scan the QR code with the Spotistats app</p>
-          <Button size="large" @click="validateQr">I've scanned the QR-code with the app</Button>
         </div>
+        <Button @click="validateQr" class="scanned-button"
+          >I've scanned the QR-code with the app</Button
+        >
         <Divider>or</Divider>
         <Button>Sign in with Spotify</Button>
       </Card>
@@ -45,6 +47,10 @@
     color: var(--text-secondary);
   }
 }
+
+.scanned-button {
+  margin-top: var(--gap);
+}
 </style>
 
 <script lang="ts">
@@ -73,11 +79,22 @@ export default defineComponent({
     Divider,
   },
   async created() {
-    this.qrdata = (await fetch(`https://beta-api.spotistats.app/api/v1/auth/qr?secret=${this.secret}`).then((res) => res.json())).data;
+    this.qrdata = (
+      await fetch(
+        `https://beta-api.spotistats.app/api/v1/auth/qr?secret=${this.secret}`,
+      ).then((res) => res.json())
+    ).data;
   },
   methods: {
     async validateQr() {
-      this.token = (await fetch('https://beta-api.spotistats.app/api/v1/auth/qr', { method: 'POST', body: JSON.stringify({ data: this.qrdata, secret: this.secret }), headers: { 'Content-Type': 'application/json' } }).then((res) => res.json())).data;
+      this.token = (
+        await fetch('https://beta-api.spotistats.app/api/v1/auth/qr', {
+          method: 'POST',
+          body: JSON.stringify({ data: this.qrdata, secret: this.secret }),
+          headers: { 'Content-Type': 'application/json' },
+        }).then((res) => res.json())
+      ).data;
+      // eslint-disable-next-line no-alert
       alert(this.token);
     },
   },
