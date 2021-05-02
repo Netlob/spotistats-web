@@ -63,6 +63,7 @@
   -webkit-align-content: space-between;
   align-content: space-between;
   height: 410px;
+  perspective: 1200px;
 
   .image-card {
     width: 300px;
@@ -70,6 +71,12 @@
     -webkit-box-shadow: 0px 10px 50px -10px rgba(0, 0, 0, 1);
     -moz-box-shadow: 0px 10px 50px -10px rgba(0, 0, 0, 1);
     box-shadow: 0px 10px 50px -10px rgba(0, 0, 0, 1);
+    transform-style: preserve-3d;
+    transition: transform 0.5s;
+
+    &:hover {
+      transform: scale(1.08);
+    }
   }
 
   .card1 {
