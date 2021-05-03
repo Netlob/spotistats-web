@@ -27,6 +27,10 @@ body {
 	overflow-x: hidden;
 }
 
+::selection {
+	background-color: var(--primary);
+}
+
 /* Reset default margins */
 *, *::before, *::after {
 	box-sizing: border-box;
