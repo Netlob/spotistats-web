@@ -18,6 +18,12 @@
 <style lang="scss" scoped>
 .image-card {
   width: 100%;
+  border-radius: 25px;
+  transition: all 0.3s;
+
+  &:hover {
+    transform: scale(1.08);
+  }
 }
 
 .link {
@@ -42,6 +48,11 @@
     height: 100%;
     object-fit: cover;
     filter: brightness(0.85);
+    transition: all 0.3s;
+
+    &:hover {
+      filter: brightness(1);
+    }
   }
 
   .sticky-corner {
