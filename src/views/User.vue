@@ -2,34 +2,28 @@
   <div id="user">
     <!-- Top section with profile -->
     <div class="block">
-      <Container>
-        <Profile />
+      <Container v-if="stats.userInfo">
+        <Profile :image="stats.userInfo.images" :displayName="stats.userInfo.display_name" />
       </Container>
     </div>
     <!-- Main page -->
     <main>
       <Container>
-        <Card>
+        <Card v-if="stats.topArtists && stats.topTracks">
           <div class="two-cols">
             <div>
               <h2 class="card-title">
                 <strong>{{ $t('topTracks') }}</strong> <span>{{ $t('pastFourWeeks') }}</span>
               </h2>
               <ImageCardContainer>
-                <ImageCard
-                  image="https://images-na.ssl-images-amazon.com/images/I/71bASkE2SSL._SL1200_.jpg"
-                  title="Cherokee"
-                  sticky-corner="#5"
-                  link="/artist/geenideewieditis"
-                />
-                <ImageCard
-                  image="https://i0.wp.com/abitofpopmusic.com/wp-content/uploads/2020/06/astrid-s-dance-dance-dance.jpg?fit=1200%2C1200&ssl=1"
-                  title="Dance Dance Dance"
-                />
-                <ImageCard
-                  image="https://upload.wikimedia.org/wikipedia/en/2/26/Dark_Was_the_Night_%28Front_Cover%29.png"
-                  title="So Far Around The Bend"
-                />
+                <div v-for="(track, index) in stats.topTracks.items" :key="track.id">
+                  <ImageCard
+                    :image="track.album.images[0].url"
+                    :title="track.name"
+                    :sticky-corner="`#${index + 1}`"
+                    :link="`/track/${track.id}`"
+                  />
+                </div>
               </ImageCardContainer>
             </div>
             <div>
@@ -37,18 +31,14 @@
                 <strong>{{ $t('topArtists') }}</strong> <span>{{ $t('pastFourWeeks') }}</span>
               </h2>
               <ImageCardContainer>
-                <ImageCard
-                  image="https://i0.wp.com/abitofpopmusic.com/wp-content/uploads/2020/06/astrid-s-dance-dance-dance.jpg?fit=1200%2C1200&ssl=1"
-                  title="Astrid S"
-                />
-                <ImageCard
-                  image="https://media.pitchfork.com/photos/5929be44c0084474cd0c2e6c/1:1/w_320/1cdb9cc5.jpg"
-                  title="Cat Power"
-                />
-                <ImageCard
-                  image="https://images.nrc.nl/kupIFtTa2yja3nak3ZDgtUcSK40=/1280x/filters:no_upscale()/s3/static.nrc.nl/bvhw/files/2019/08/data47919154-c4cc8a-e1565791272846.jpg"
-                  title="The National"
-                />
+                <div v-for="(artist, index) in stats.topArtists.items" :key="artist.id">
+                  <ImageCard
+                    :image="artist.images[0].url"
+                    :title="artist.name"
+                    :sticky-corner="`#${index + 1}`"
+                    :link="`/artist/${artist.id}`"
+                  />
+                </div>
               </ImageCardContainer>
             </div>
           </div>
@@ -118,6 +108,40 @@ export default defineComponent({
     Card,
     ImageCardContainer,
     ImageCard,
+  },
+  data() {
+    return {
+      stats: {
+        type: Object,
+        default: {},
+      },
+    };
+  },
+  mounted() {
+    this.getUserStats();
+  },
+  methods: {
+    async getUserStats() {
+      const token: string = localStorage.getItem('token') || '';
+
+      if (token) {
+        const response = await fetch(
+          `${process.env.VUE_APP_SERVER_URL}/friends/stats/${this.$route.params.userid}`,
+          {
+            mode: 'cors',
+            method: 'get',
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: token,
+            },
+          }
+        ).then((res) => res.json());
+        this.stats = response.data;
+        return;
+      }
+
+      this.$router.push('/signin');
+    },
   },
 });
 </script>
