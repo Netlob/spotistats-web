@@ -99,7 +99,7 @@ export default defineComponent({
         }).then((res) => res.json())
       ).data;
       localStorage.setItem('token', this.token);
-      window.location.href = '/';
+      this.$router.push('/');
     },
   },
 });
