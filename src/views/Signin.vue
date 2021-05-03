@@ -86,20 +86,29 @@ export default defineComponent({
     Qrcode,
   },
   async created() {
-    this.data = (await fetch(`https://beta-api.spotistats.app/api/v1/auth/qr?secret=${this.secret}`).then((res) => res.json())).data;
+    this.data = (
+      await fetch(
+        `https://beta-api.spotistats.app/api/v1/auth/qr?secret=${this.secret}`,
+      ).then((res) => res.json())
+    ).data;
     this.qrdata = `spotistats://auth#${this.data}`;
   },
   methods: {
     async validateQr() {
-      this.token = (
-        await fetch('https://beta-api.spotistats.app/api/v1/auth/qr', {
-          method: 'POST',
-          body: JSON.stringify({ data: this.data, secret: this.secret }),
-          headers: { 'Content-Type': 'application/json' },
-        }).then((res) => res.json())
-      ).data;
-      localStorage.setItem('token', this.token);
-      this.$router.push('/');
+      const response = await fetch('https://beta-api.spotistats.app/api/v1/auth/qr', {
+        method: 'POST',
+        body: JSON.stringify({ data: this.data, secret: this.secret }),
+        headers: { 'Content-Type': 'application/json' },
+      }).then((res) => res.json());
+
+      if (response.ok) {
+        this.token = response.data;
+        localStorage.setItem('token', this.token);
+        this.$router.push('/');
+      } else {
+        // TODO: create popup or something instead af an alert
+        alert('Qr code not scanned');
+      }
     },
   },
 });
