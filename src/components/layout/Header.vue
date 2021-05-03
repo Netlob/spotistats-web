@@ -19,6 +19,7 @@
 header {
   background: var(--body-lighter);
   padding: 10px;
+  width: 100vw;
 
   .logo svg {
     display: block;
