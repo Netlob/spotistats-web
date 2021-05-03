@@ -87,15 +87,15 @@ export default defineComponent({
   },
   async created() {
     this.data = (
-      await fetch(
-        `https://beta-api.spotistats.app/api/v1/auth/qr?secret=${this.secret}`,
-      ).then((res) => res.json())
+      await fetch(`${process.env.VUE_APP_SERVER_URL}/auth/qr?secret=${this.secret}`).then((res) =>
+        res.json()
+      )
     ).data;
     this.qrdata = `spotistats://auth#${this.data}`;
   },
   methods: {
     async validateQr() {
-      const response = await fetch('https://beta-api.spotistats.app/api/v1/auth/qr', {
+      const response = await fetch(`${process.env.VUE_APP_SERVER_URL}/auth/qr`, {
         method: 'POST',
         body: JSON.stringify({ data: this.data, secret: this.secret }),
         headers: { 'Content-Type': 'application/json' },
