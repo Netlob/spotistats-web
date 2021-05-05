@@ -99,16 +99,17 @@ export default defineComponent({
         method: 'POST',
         body: JSON.stringify({ data: this.data, secret: this.secret }),
         headers: { 'Content-Type': 'application/json' },
-      }).then((res) => res.json());
+      });
 
       if (response.ok) {
-        this.token = response.data;
+        const json = await response.json();
+        this.token = json.data;
         localStorage.setItem('token', this.token);
         this.$router.push('/');
-      } else {
-        // TODO: create popup or something instead af an alert
-        alert('Qr code not scanned');
+        return;
       }
+      // TODO: create popup or something instead af an alert
+      alert('Qr code not scanned');
     },
   },
 });
