@@ -1,12 +1,28 @@
 import { createStore } from 'vuex';
 
+const token = localStorage.getItem("token") || '';
+
 export default createStore({
   state: {
+    tracks: [],
   },
   mutations: {
+    SET_TRACKS(state, tracks) {
+        state.tracks = tracks
+    },
   },
   actions: {
-  },
-  modules: {
+    async getTracks({ commit }) {
+        const tracks = await fetch(`${process.env.VUE_APP_SERVER_URL}/spotify/me/top/tracks?limit=50`, {
+            method: "GET",
+            headers: {
+            "Content-Type": "application/json",
+            Authorization: token,
+            },
+        });
+
+        const json = await tracks.json();
+        commit('SET_TRACKS', json)
+    },
   },
 });
