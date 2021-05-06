@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory, NavigationGuard, RouteRecordRaw } from 'vue-router';
 import Home from '../views/Home.vue';
 import User from '../views/User.vue';
-import Signin from '../views/Signin.vue';
+import Login from '../views/Login.vue';
 import Artist from '../views/Artist.vue';
 import Global from '../views/Global.vue';
 
@@ -21,9 +21,9 @@ const routes: Array<RouteRecordRaw> = [
     component: Home,
   },
   {
-    path: '/signin',
-    name: 'Signin',
-    component: Signin,
+    path: '/login',
+    name: 'Login',
+    component: Login,
   },
   {
     path: '/user/:userid',
