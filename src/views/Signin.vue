@@ -14,7 +14,7 @@
           </div>
           <p class="qr-info">Scan the QR code with the Spotistats app</p>
         </div>
-        <Button @click="validateQr" class="scanned-button"
+        <Button @click.stop="validateQr" class="scanned-button"
           >I've scanned the QR-code with the app</Button
         >
       </Card>
@@ -85,15 +85,18 @@ export default defineComponent({
     Button,
     Qrcode,
   },
-  async created() {
-    this.data = (
-      await fetch(`${process.env.VUE_APP_SERVER_URL}/auth/qr?secret=${this.secret}`).then((res) =>
-        res.json()
-      )
-    ).data;
-    this.qrdata = `spotistats://auth#${this.data}`;
+  created() {
+    this.setQrCode();
   },
   methods: {
+    async setQrCode() {
+      this.data = (
+        await fetch(`${process.env.VUE_APP_SERVER_URL}/auth/qr?secret=${this.secret}`).then((res) =>
+          res.json()
+        )
+      ).data;
+      this.qrdata = `spotistats://auth#${this.data}`;
+    },
     async validateQr() {
       const response = await fetch(`${process.env.VUE_APP_SERVER_URL}/auth/qr`, {
         method: 'POST',
@@ -105,7 +108,7 @@ export default defineComponent({
         const json = await response.json();
         this.token = json.data;
         localStorage.setItem('token', this.token);
-        this.$router.push('/');
+        this.$router.push(this.$route.redirectedFrom?.fullPath || '/');
         return;
       }
       // TODO: create popup or something instead af an alert
