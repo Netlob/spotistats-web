@@ -9,7 +9,7 @@ const ifAuthenticated: NavigationGuard = (to, from, next) => {
   if (localStorage.getItem('token')) {
     next()
   } else {
-    next({ name: 'Signin' })
+    next({ name: 'Login' })
   }
 }
 

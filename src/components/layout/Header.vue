@@ -7,7 +7,7 @@
         </router-link>
       </div>
       <nav>
-        <router-link to="/signin">
+        <router-link :to="{ name: 'Login' }">
           <Button type="primary" size="small">Sign In</Button>
         </router-link>
       </nav>
