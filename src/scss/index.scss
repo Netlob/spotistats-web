@@ -1,0 +1,20 @@
+@import url('./variables.scss'); 
+
+body {
+	margin: 0;
+	background: var(--body);
+	color: var(--text);
+	font-family: Poppins, Arial, Helvetica, sans-serif;
+	overflow-x: hidden;
+}
+
+::selection {
+	background-color: var(--primary);
+	color: var(--text);
+}
+
+/* Reset default margins */
+*, *::before, *::after {
+	box-sizing: border-box;
+	margin: 0;
+}
