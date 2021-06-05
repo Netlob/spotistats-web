@@ -14,7 +14,7 @@
           </div>
           <p class="qr-info">Scan the QR code with the Spotistats app</p>
         </div>
-        <Button @click.stop="validateQr" class="scanned-button"
+        <Button @mouseup="validateQr" class="scanned-button"
           >I've scanned the QR-code with the app</Button
         >
       </Card>
@@ -64,6 +64,7 @@
 <script lang="ts">
 import { uuid } from 'vue-uuid';
 import { defineComponent } from 'vue';
+import config from '@/config/config';
 import Qrcode from 'qrcode.vue';
 import Card from '../components/layout/Card.vue';
 import Container from '../components/layout/Container.vue';
@@ -91,14 +92,12 @@ export default defineComponent({
   methods: {
     async setQrCode() {
       this.data = (
-        await fetch(`${process.env.VUE_APP_SERVER_URL}/auth/qr?secret=${this.secret}`).then((res) =>
-          res.json()
-        )
+        await fetch(`${config.server.url}/auth/qr?secret=${this.secret}`).then((res) => res.json())
       ).data;
       this.qrdata = `spotistats://auth#${this.data}`;
     },
     async validateQr() {
-      const response = await fetch(`${process.env.VUE_APP_SERVER_URL}/auth/qr`, {
+      const response = await fetch(`${config.server.url}/auth/qr`, {
         method: 'POST',
         body: JSON.stringify({ data: this.data, secret: this.secret }),
         headers: { 'Content-Type': 'application/json' },
