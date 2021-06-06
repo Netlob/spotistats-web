@@ -8,7 +8,7 @@
       </div>
       <nav>
         <router-link :to="{ name: 'Login' }">
-          <Button type="primary" size="small">Sign In</Button>
+          <Button type="primary" size="small">{{ $t('welcomeButton') }}</Button>
         </router-link>
       </nav>
     </Container>
