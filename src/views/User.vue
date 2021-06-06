@@ -105,7 +105,6 @@ main {
 
 .artist {
   margin-bottom: var(--gap-small);
-  font-weight: 600;
   font-size: 1.2rem;
 }
 
