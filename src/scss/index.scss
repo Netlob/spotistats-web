@@ -1,10 +1,11 @@
-@import url('./variables.scss'); 
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import url('./variables.scss');
 
 body {
 	margin: 0;
 	background: var(--body);
 	color: var(--text);
-	font-family: Poppins, Arial, Helvetica, sans-serif;
+	font-family: Inter, Arial, Helvetica, sans-serif;
 	overflow-x: hidden;
 }
 
@@ -33,4 +34,30 @@ body {
 
 .mb-gap-large {
 	margin-bottom: var(--gap-large);
+}
+
+.md {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  color: var(--primary);
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: 'liga';
 }
