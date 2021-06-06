@@ -1,7 +1,5 @@
 <template>
-  <div class="home">
-    Dit is de home pagina
-  </div>
+  <div class="home">Dit is de home pagina</div>
 </template>
 
 <style lang="scss" scoped>

@@ -41,7 +41,7 @@
             </div>
             <div class="info">
               <h1>RAPSTER</h1>
-              <p>4,566,861 {{ $t('streams') }}</p>
+              <p>4,566,861 {{ $t("streams") }}</p>
             </div>
           </div>
         </Card>

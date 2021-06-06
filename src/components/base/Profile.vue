@@ -1,6 +1,11 @@
 <template>
   <div class="profile">
-    <img v-if="image.length > 0" :src="image[0].url" class="profile-picture" :alt="displayName" />
+    <img
+      v-if="image.length > 0"
+      :src="image[0].url"
+      class="profile-picture"
+      :alt="displayName"
+    />
     <div v-else class="profile-picture">
       no image
       <!-- TODO: add a placeholder image or something -->

@@ -1,5 +1,10 @@
 <template>
-  <button class="app-button" :data-type="type" :data-size="size" @click="e => $emit('click', e)">
+  <button
+    class="app-button"
+    :data-type="type"
+    :data-size="size"
+    @click="(e) => $emit('click', e)"
+  >
     <slot />
   </button>
 </template>
@@ -19,7 +24,7 @@
   font-size: 1rem;
 
   // Color schemes for the button
-  &[data-type='primary'] {
+  &[data-type="primary"] {
     background: var(--primary-button-bg);
     color: var(--primary-button-text);
 
@@ -33,7 +38,7 @@
   }
 
   // Sizes
-  &[data-size='small'] {
+  &[data-size="small"] {
     border-radius: 6px;
     padding: 8px 20px;
   }

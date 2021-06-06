@@ -18,13 +18,13 @@
     color: var(--text-secondary);
   }
 
-  &::before, &::after {
-    content: '';
+  &::before,
+  &::after {
+    content: "";
     display: block;
     width: 100%;
     height: 1px;
     background: var(--border);
   }
-
 }
 </style>

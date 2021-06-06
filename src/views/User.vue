@@ -229,7 +229,7 @@ export default defineComponent({
               'Content-Type': 'application/json',
               Authorization: token,
             },
-          }
+          },
         ).then((res) => res.json());
         this.stats = response.data;
       }
