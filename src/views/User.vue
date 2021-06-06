@@ -164,6 +164,7 @@ main {
 
     background-position: center;
     background-size: cover;
+    background-color: var(--body-lighter);
 
     -webkit-box-shadow: 0px 10px 50px -10px var(--box-shadow);
     -moz-box-shadow: 0px 10px 50px -10px var(--box-shadow);
