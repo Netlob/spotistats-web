@@ -1,5 +1,5 @@
 <template>
-  <div id="user">
+  <div>
     <!-- Top section with profile -->
     <div class="block">
       <Container v-if="stats.userInfo">
@@ -9,40 +9,27 @@
     <!-- Main page -->
     <main>
       <Container>
-        <Card v-if="stats.topArtists && stats.topTracks">
-          <div class="two-cols">
-            <div>
-              <h2 class="card-title">
-                <strong>{{ $t('topTracks') }}</strong> <span>{{ $t('pastFourWeeks') }}</span>
-              </h2>
-              <ImageCardContainer>
-                <div v-for="(track, index) in stats.topTracks.items" :key="track.id">
-                  <ImageCard
-                    :image="track.album.images[0].url"
-                    :title="track.name"
-                    :sticky-corner="`#${index + 1}`"
-                    :link="`/track/${track.id}`"
-                  />
-                </div>
-              </ImageCardContainer>
+        <ColumnLayout v-if="stats.topArtists">
+          <Column>
+            <!-- other tracks -->
+          </Column>
+          <Column class="top-artists-column">
+            <div class="top-artists">
+              <div
+                class="image-card item-1"
+                :style="{ backgroundImage: `url(${stats.topArtists.items[1].images[0].url})` }"
+              ></div>
+              <div
+                class="image-card item-3"
+                :style="{ backgroundImage: `url(${stats.topArtists.items[2].images[0].url})` }"
+              ></div>
+              <div
+                class="image-card item-2"
+                :style="{ backgroundImage: `url(${stats.topArtists.items[0].images[0].url})` }"
+              ></div>
             </div>
-            <div>
-              <h2 class="card-title">
-                <strong>{{ $t('topArtists') }}</strong> <span>{{ $t('pastFourWeeks') }}</span>
-              </h2>
-              <ImageCardContainer>
-                <div v-for="(artist, index) in stats.topArtists.items" :key="artist.id">
-                  <ImageCard
-                    :image="artist.images[0].url"
-                    :title="artist.name"
-                    :sticky-corner="`#${index + 1}`"
-                    :link="`/artist/${artist.id}`"
-                  />
-                </div>
-              </ImageCardContainer>
-            </div>
-          </div>
-        </Card>
+          </Column>
+        </ColumnLayout>
       </Container>
     </main>
   </div>
@@ -58,75 +45,112 @@
   padding-bottom: 150px;
 }
 
-main {
-  margin-top: -100px;
-}
-
-.two-cols {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: var(--gap-larger);
-}
-
-@media (max-width: 1000px) {
-  .two-cols {
-    grid-template-columns: 100%;
-  }
-}
-
-.card-title {
-  font-weight: inherit;
-  font-size: 1.5rem;
-}
-
-.image-card-container {
-  margin-top: var(--gap);
-}
-
 .card {
-  -webkit-box-shadow: 0px 10px 50px -10px rgba(0, 0, 0, 0.5);
-  -moz-box-shadow: 0px 10px 50px -10px rgba(0, 0, 0, 0.5);
-  box-shadow: 0px 10px 50px -10px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0px 10px 50px -10px var(--box-shadow);
+  -moz-box-shadow: 0px 10px 50px -10px var(--box-shadow);
+  box-shadow: 0px 10px 50px -10px var(--box-shadow);
+}
+
+main {
+  margin-top: var(--gap-large);
+}
+
+.top-artists-column {
+  display: grid;
+  place-items: center;
+}
+
+.top-artists {
+  display: grid;
+  grid-template-areas: 'left middle right';
+
+  .item-2 {
+    transform: scale(1.2);
+    transition: transform 0.3s;
+    z-index: 1;
+    grid-area: middle;
+
+    &:hover {
+      transform: scale(1.24);
+    }
+  }
+
+  .item-1 {
+    margin-right: -50px;
+    transition: transform 0.3s;
+    grid-area: left;
+
+    &:hover {
+      transform: scale(1.04) translateX(-20px) rotateZ(-2deg);
+    }
+
+    &:hover ~ .item-2 {
+      transform: scale(1.2) translateX(20px) rotateZ(2deg);
+    }
+  }
+
+  .item-3 {
+    margin-left: -50px;
+    transition: transform 0.3s;
+    grid-area: right;
+
+    &:hover {
+      transform: scale(1.04) translateX(20px) rotateZ(2deg);
+    }
+
+    &:hover + .item-2 {
+      transform: scale(1.2) translateX(-20px) rotateZ(-2deg);
+    }
+  }
+
+  .image-card {
+    grid-row: 1;
+    width: 200px;
+    height: 200px;
+    border-radius: 25px;
+
+    background-position: center;
+    background-size: cover;
+
+    -webkit-box-shadow: 0px 10px 50px -10px var(--box-shadow);
+    -moz-box-shadow: 0px 10px 50px -10px var(--box-shadow);
+    box-shadow: 0px 10px 50px -10px var(--box-shadow);
+  }
 }
 </style>
 
 <script lang="ts">
 // Import Vue
 import { defineComponent } from 'vue';
+import config from '@/config/config';
 
 // Import components
+import ColumnLayout from '@/components/layout/ColumnLayout.vue';
+import Column from '@/components/layout/Column.vue';
 import Profile from '../components/base/Profile.vue';
 import Container from '../components/layout/Container.vue';
-import Card from '../components/layout/Card.vue';
-import ImageCardContainer from '../components/layout/ImageCardContainer.vue';
-import ImageCard from '../components/base/ImageCard.vue';
 
 export default defineComponent({
   components: {
     Profile,
     Container,
-    Card,
-    ImageCardContainer,
-    ImageCard,
+    Column,
+    ColumnLayout,
   },
   data() {
     return {
-      stats: {
-        type: Object,
-        default: {},
-      },
+      stats: null as unknown,
     };
   },
-  mounted() {
+  created() {
     this.getUserStats();
   },
   methods: {
     async getUserStats() {
       const token: string = localStorage.getItem('token') || '';
-
       if (token) {
         const response = await fetch(
-          `${process.env.VUE_APP_SERVER_URL}/friends/stats/${this.$route.params.userid}`,
+          `${config.server.url}/friends/stats/${this.$route.params.userid}`,
           {
             mode: 'cors',
             method: 'get',
@@ -137,10 +161,7 @@ export default defineComponent({
           }
         ).then((res) => res.json());
         this.stats = response.data;
-        return;
       }
-
-      this.$router.push('/signin');
     },
   },
 });
