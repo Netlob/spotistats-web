@@ -5,6 +5,7 @@
       <component :is="Component"></component>
     </transition>
   </router-view>
+  <Footer />
 </template>
 
 <style lang="scss" scoped>
@@ -24,11 +25,13 @@
 import { defineComponent } from 'vue';
 
 // Import components
-import Header from './components/layout/Header.vue';
+import Header from '@/components/layout/Header.vue';
+import Footer from '@/components/layout/Footer.vue';
 
 export default defineComponent({
   components: {
     Header,
+    Footer,
   },
 });
 </script>
