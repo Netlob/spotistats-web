@@ -18,3 +18,19 @@ body {
 	box-sizing: border-box;
 	margin: 0;
 }
+
+.mt-gap {
+	margin-top: var(--gap);
+}
+
+.mb-gap {
+	margin-bottom: var(--gap);
+}
+
+.mt-gap-large {
+	margin-top: var(--gap-large);
+}
+
+.mb-gap-large {
+	margin-bottom: var(--gap-large);
+}
