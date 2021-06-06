@@ -10,11 +10,22 @@
     <main>
       <Container>
         <ColumnLayout v-if="stats.topArtists">
-          <Column>
-            <!-- other tracks -->
+          <Column class="left">
+            <div class="mb-gap-large mt-gap-large">
+              <h1>{{ $t('topArtists') }}</h1>
+            </div>
+            <div
+              v-for="(artist, index) in stats.topArtists.items.slice(0, 10)"
+              :key="artist.id"
+              class="artist"
+            >
+              <router-link :to="{ name: 'Artist', params: { id: artist.id } }" class="link">
+                {{ index + 1 }} <span class="artist-name">{{ artist.name }}</span>
+              </router-link>
+            </div>
           </Column>
-          <Column class="top-artists-column">
-            <div class="top-artists">
+          <Column class="top-column">
+            <div class="top">
               <div
                 class="image-card item-1"
                 :style="{ backgroundImage: `url(${stats.topArtists.items[1].images[0].url})` }"
@@ -26,6 +37,38 @@
               <div
                 class="image-card item-2"
                 :style="{ backgroundImage: `url(${stats.topArtists.items[0].images[0].url})` }"
+              ></div>
+            </div>
+          </Column>
+        </ColumnLayout>
+        <ColumnLayout v-if="stats.topTracks">
+          <Column class="right">
+            <div class="mb-gap-large mt-gap-large">
+              <h1>{{ $t('topTracks') }}</h1>
+            </div>
+            <div
+              v-for="(track, index) in stats.topTracks.items.slice(0, 10)"
+              :key="track.id"
+              class="artist"
+            >
+              <router-link :to="{ name: 'Track', params: { id: track.id } }" class="link">
+                {{ index + 1 }} <span class="artist-name">{{ track.name }}</span>
+              </router-link>
+            </div>
+          </Column>
+          <Column class="top-column">
+            <div class="top">
+              <div
+                class="image-card item-1"
+                :style="{ backgroundImage: `url(${stats.topTracks.items[1].album.images[0].url})` }"
+              ></div>
+              <div
+                class="image-card item-3"
+                :style="{ backgroundImage: `url(${stats.topTracks.items[2].album.images[0].url})` }"
+              ></div>
+              <div
+                class="image-card item-2"
+                :style="{ backgroundImage: `url(${stats.topTracks.items[0].album.images[0].url})` }"
               ></div>
             </div>
           </Column>
@@ -55,12 +98,23 @@ main {
   margin-top: var(--gap-large);
 }
 
-.top-artists-column {
+.top-column {
   display: grid;
   place-items: center;
 }
 
-.top-artists {
+.artist {
+  margin-bottom: var(--gap-small);
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+.link {
+  color: var(--text);
+  text-decoration: none;
+}
+
+.top {
   display: grid;
   grid-template-areas: 'left middle right';
 
