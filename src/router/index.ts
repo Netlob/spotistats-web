@@ -1,9 +1,10 @@
 import { createRouter, createWebHistory, NavigationGuard, RouteRecordRaw } from 'vue-router';
-import Home from '../views/Home.vue';
-import User from '../views/User.vue';
-import Login from '../views/Login.vue';
-import Artist from '../views/Artist.vue';
-import Global from '../views/Global.vue';
+import Home from '@/views/Home.vue';
+import User from '@/views/User.vue';
+import Login from '@/views/Login.vue';
+import Artist from '@/views/Artist.vue';
+import Track from '@/views/Track.vue';
+import Global from '@/views/Global.vue';
 
 const ifAuthenticated: NavigationGuard = (to, from, next) => {
   if (localStorage.getItem('token')) {
@@ -35,6 +36,12 @@ const routes: Array<RouteRecordRaw> = [
     path: '/artist/:id',
     name: 'Artist',
     component: Artist,
+    beforeEnter : ifAuthenticated,
+  },
+  {
+    path: '/track/:id',
+    name: 'Track',
+    component: Track,
     beforeEnter : ifAuthenticated,
   },
   {
