@@ -20,7 +20,7 @@
               class="artist"
             >
               <router-link :to="{ name: 'Artist', params: { id: artist.id } }" class="link">
-                {{ index + 1 }} <span class="artist-name">{{ artist.name }}</span>
+                #{{ index + 1 }} <span class="artist-name">{{ artist.name }}</span>
               </router-link>
             </div>
           </Column>
@@ -52,7 +52,7 @@
               class="artist"
             >
               <router-link :to="{ name: 'Track', params: { id: track.id } }" class="link">
-                {{ index + 1 }} <span class="artist-name">{{ track.name }}</span>
+                #{{ index + 1 }} <span class="artist-name">{{ track.name }}</span>
               </router-link>
             </div>
           </Column>
