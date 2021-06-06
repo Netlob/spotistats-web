@@ -19,11 +19,6 @@
 .image-card {
   width: 100%;
   border-radius: 25px;
-  transition: all 0.3s;
-
-  &:hover {
-    transform: scale(1.08);
-  }
 }
 
 .link {
@@ -51,7 +46,6 @@
     transition: all 0.3s;
 
     &:hover {
-      transform: scale(1.08);
       filter: brightness(1);
     }
   }

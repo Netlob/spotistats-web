@@ -26,18 +26,21 @@
           </Column>
           <Column class="top-column">
             <div class="top">
-              <div
-                class="image-card item-1"
-                :style="{ backgroundImage: `url(${stats.topArtists.items[1].images[0].url})` }"
-              ></div>
-              <div
-                class="image-card item-3"
-                :style="{ backgroundImage: `url(${stats.topArtists.items[2].images[0].url})` }"
-              ></div>
-              <div
-                class="image-card item-2"
-                :style="{ backgroundImage: `url(${stats.topArtists.items[0].images[0].url})` }"
-              ></div>
+              <ImageCard
+                :image="stats.topArtists.items[1].images[0].url"
+                stickyCorner="#2"
+                class="item-1"
+              ></ImageCard>
+              <ImageCard
+                :image="stats.topArtists.items[2].images[0].url"
+                stickyCorner="#3"
+                class="item-3"
+              ></ImageCard>
+              <ImageCard
+                :image="stats.topArtists.items[0].images[0].url"
+                class="item-2"
+                stickyCorner="#1"
+              ></ImageCard>
             </div>
           </Column>
         </ColumnLayout>
@@ -58,18 +61,21 @@
           </Column>
           <Column class="top-column">
             <div class="top">
-              <div
-                class="image-card item-1"
-                :style="{ backgroundImage: `url(${stats.topTracks.items[1].album.images[0].url})` }"
-              ></div>
-              <div
-                class="image-card item-3"
-                :style="{ backgroundImage: `url(${stats.topTracks.items[2].album.images[0].url})` }"
-              ></div>
-              <div
-                class="image-card item-2"
-                :style="{ backgroundImage: `url(${stats.topTracks.items[0].album.images[0].url})` }"
-              ></div>
+              <ImageCard
+                :image="stats.topTracks.items[1].album.images[0].url"
+                stickyCorner="#2"
+                class="item-1"
+              ></ImageCard>
+              <ImageCard
+                :image="stats.topTracks.items[2].album.images[0].url"
+                stickyCorner="#3"
+                class="item-3"
+              ></ImageCard>
+              <ImageCard
+                stickyCorner="#1"
+                :image="stats.topTracks.items[0].album.images[0].url"
+                class="item-2"
+              ></ImageCard>
             </div>
           </Column>
         </ColumnLayout>
@@ -123,6 +129,9 @@ main {
     z-index: 1;
     grid-area: middle;
 
+    width: 200px;
+    height: 200px;
+
     &:hover {
       transform: scale(1.24);
     }
@@ -133,8 +142,11 @@ main {
     transition: transform 0.3s;
     grid-area: left;
 
+    width: 200px;
+    height: 200px;
+
     &:hover {
-      transform: scale(1.04) translateX(-20px) rotateZ(-2deg);
+      transform: translateX(-20px) rotateZ(-2deg);
     }
 
     &:hover ~ .item-2 {
@@ -146,6 +158,9 @@ main {
     margin-left: -50px;
     transition: transform 0.3s;
     grid-area: right;
+
+    width: 200px;
+    height: 200px;
 
     &:hover {
       transform: scale(1.04) translateX(20px) rotateZ(2deg);
@@ -181,6 +196,7 @@ import config from '@/config/config';
 // Import components
 import ColumnLayout from '@/components/layout/ColumnLayout.vue';
 import Column from '@/components/layout/Column.vue';
+import ImageCard from '@/components/base/ImageCard.vue';
 import Profile from '../components/base/Profile.vue';
 import Container from '../components/layout/Container.vue';
 
@@ -190,6 +206,7 @@ export default defineComponent({
     Container,
     Column,
     ColumnLayout,
+    ImageCard,
   },
   data() {
     return {
