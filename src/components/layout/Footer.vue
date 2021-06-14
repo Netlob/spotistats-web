@@ -3,38 +3,24 @@
     <Container>
       <ColumnLayout>
         <Column>
-          <router-link to="/privacy">What's New</router-link>
-          <router-link to="/privacy">Privacy Policy</router-link>
-          <router-link to="/privacy">Terms & Conditions</router-link>
-          <router-link to="/privacy">Status</router-link>
-          <Row class="mt-gap">
-            <SocialButton
-              icon="face"
-              @click="redirectToSocial(`${config.server.url}/redirect/discord`)"
-            />
-            <SocialButton icon="mail" @click="redirectToSocial(`mailto:sjoerd@netlob.dev`)" />
-            <SocialButton
-              icon="face"
-              @click="redirectToSocial(`${config.server.url}/redirect/twitter`)"
-            />
-          </Row>
+          <Logo class="logo" />
+          <div class="routes">
+            <router-link to="/privacy">What's New</router-link>
+            <router-link to="/privacy">Privacy Policy</router-link>
+            <router-link to="/privacy">Terms & Conditions</router-link>
+            <router-link to="/privacy">Status</router-link>
+          </div>
         </Column>
-        <Column>
+        <Column class="right-align">
           <div class="badges">
-            <a
-              href="https://play.google.com/store/apps/details?id=dev.netlob.spotistats"
-              target="_blank"
-            >
+            <a href="" target="_blank">
               <img
                 src="@/assets/google_play_store_badge.svg"
                 alt="get Spotists on the Play Store"
                 class="badge"
               />
             </a>
-            <a
-              href="https://apps.apple.com/app/spotistats-for-spotify/id1526912392"
-              target="_blank"
-            >
+            <a href="" target="_blank">
               <img
                 src="@/assets/apple_app_store_badge.svg"
                 alt="get Spotists on the App Store"
@@ -42,6 +28,27 @@
               />
             </a>
           </div>
+          <Row class="socials">
+            <SocialButton
+              icon="fas fa-envelope"
+              @click="redirectToSocial(`mailto:web@spotistats.app`)"
+            />
+            <SocialButton
+              icon="fab fa-github"
+              @click="redirectToSocial(`${config.server.url}/redirect/discord`)"
+            />
+            <SocialButton
+              icon="fab fa-twitter"
+              @click="redirectToSocial(`${config.server.url}/redirect/twitter`)"
+            />
+            <SocialButton
+              icon="fab fa-instagram"
+              @click="
+                redirectToSocial(`${config.server.url}/redirect/instagram
+              `)
+              "
+            />
+          </Row>
         </Column>
       </ColumnLayout>
     </Container>
@@ -53,6 +60,24 @@ footer {
   background-color: var(--body-lighter);
   padding: var(--gap-large);
   margin-top: var(--gap-large);
+
+  .right-align {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+
+  .logo {
+    width: 32px;
+    height: 32px;
+    margin-bottom: var(--gap-large);
+  }
+
+  .routes {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap);
+  }
 
   a {
     color: var(--primary);
@@ -71,18 +96,24 @@ footer {
       width: 200px;
     }
   }
+
+  .socials {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: var(--gap-large);
+  }
 }
 </style>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
 import config from '@/config/config';
-import dayjs from '@/utils/day';
 import Container from '@/components/layout/Container.vue';
 import ColumnLayout from '@/components/layout/ColumnLayout.vue';
 import Column from '@/components/layout/Column.vue';
 import Row from '@/components/layout/Row.vue';
 import SocialButton from '@/components/base/buttons/SocialButton.vue';
+import Logo from '@/components/base/Logo.vue';
 
 export default defineComponent({
   name: 'Footer',
@@ -92,6 +123,7 @@ export default defineComponent({
     Column,
     Row,
     SocialButton,
+    Logo,
   },
   data() {
     return {
@@ -101,9 +133,6 @@ export default defineComponent({
   methods: {
     redirectToSocial(url: string) {
       window.open(url);
-    },
-    getYear() {
-      return dayjs().format('YYYY');
     },
   },
 });
