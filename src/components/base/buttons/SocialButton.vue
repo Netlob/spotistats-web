@@ -1,6 +1,6 @@
 <template>
   <button class="social-button" @click.prevent="(e) => $emit('click', e)">
-    <span class="md">{{ icon }}</span>
+    <i :class="icon"></i>
   </button>
 </template>
 
@@ -9,11 +9,17 @@
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background-color: transparent;
+  background-color: var(--primary-button-bg);
+  color: var(--primary-button-text);
   border: none;
 
   &:hover {
     cursor: pointer;
+    background-color: var(--primary-button-bg-hover);
+  }
+
+  &:active {
+    background: var(--primary-button-bg-active);
   }
 }
 </style>
