@@ -20,6 +20,10 @@ body {
 	margin: 0;
 }
 
+.fas, .fab {
+	font-size: 20px;
+}
+
 .mt-gap {
 	margin-top: var(--gap);
 }
@@ -34,30 +38,4 @@ body {
 
 .mb-gap-large {
 	margin-bottom: var(--gap-large);
-}
-
-.md {
-  font-family: 'Material Icons';
-  font-weight: normal;
-  font-style: normal;
-  font-size: 24px;  /* Preferred icon size */
-  display: inline-block;
-  line-height: 1;
-  text-transform: none;
-  letter-spacing: normal;
-  word-wrap: normal;
-  white-space: nowrap;
-  direction: ltr;
-  color: var(--primary);
-
-  /* Support for all WebKit browsers. */
-  -webkit-font-smoothing: antialiased;
-  /* Support for Safari and Chrome. */
-  text-rendering: optimizeLegibility;
-
-  /* Support for Firefox. */
-  -moz-osx-font-smoothing: grayscale;
-
-  /* Support for IE. */
-  font-feature-settings: 'liga';
 }
